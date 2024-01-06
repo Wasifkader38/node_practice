@@ -35,12 +35,23 @@
   background-color: #dc3545;
 }
 
-.explanation-image-container {
+/* Styles for the image containers */
+.question-image-container, .explanation-image-container {
   display: flex;
-  justify-content: center; /* Center the image */
-  align-items: center; /* Align vertically */
-  margin-bottom: 1rem; /* Adjust as needed */
-  /* Add other styles as per your design */
+  justify-content: center; /* Center the image horizontally */
+  align-items: center; /* Center the image vertically */
+  margin-bottom: 1rem; /* Space below the container */
+  max-width: 500px; /* Maximum width of the container */
+  height: 300px; /* Fixed height of the container */
+  overflow: hidden; /* Ensures the image does not overflow the container */
+  margin: auto; /* Centers the container itself */
+}
+
+/* Styles for the images inside the containers */
+#questionImage, #explanationImage {
+  max-width: 100%; /* Maximum width is the full width of the container */
+  max-height: 100%; /* Maximum height is the full height of the container */
+  object-fit: contain; /* Ensures the image is scaled properly */
 }
 
 .hidden {

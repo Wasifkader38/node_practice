@@ -108,10 +108,10 @@ choices.forEach(choice => {
     clearInterval(timerInterval); // Stop the timer
     acceptingAnswers = false;
 
-    const selectedChoice = e.target;
-    const selectedAnswer = selectedChoice.dataset["number"];
-    const classToApply = selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
-    selectedChoice.classList.add(classToApply);
+    const selectedAnswer = parseInt(e.target.dataset["number"]);
+    const correctAnswer = currentQuestion.answer + 1; // Adjust if your answer index is 0-based
+    const classToApply = selectedAnswer === correctAnswer ? "correct" : "incorrect";
+    e.target.classList.add(classToApply); // Apply class to the clicked element
 
     if (classToApply === "correct") {
       incrementScore(CORRECT_BONUS);
