@@ -77,7 +77,7 @@ getNewQuestion = () => {
   if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
     return window.location.assign("/index.html");
   }
-
+  question.style.display = 'block'; // Show the question
   startTimer();
 
   questionCounter++;
@@ -92,6 +92,7 @@ getNewQuestion = () => {
 
   choices.forEach((choice, index) => {
     choice.innerText = currentQuestion.choices[index]; // Update this line
+    choice.style.display = 'block';
   });
 
   availableQuesions.splice(questionIndex, 1);

@@ -57,6 +57,9 @@
 .hidden {
   display: none;
 }
+#question, .choice-text {
+  display: none;
+}
 
 
 /* HUD */
