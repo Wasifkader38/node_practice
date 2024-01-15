@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Result Page</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+
+    .result-container {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    p {
+      font-size: 24px;
+      color: #4CAF50;
+      margin-top: 10px;
+    }
+
+    .play-again-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="result-container">
+    <h1>Your Score:</h1>
+    <p id="score"></p>
+    <a href="/index.html" class="play-again-btn">Play Again</a>
+  </div>
+
+  <script>
+    // Retrieve the score from the query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const score = urlParams.get('score');
+
+    // Display the score on the page
+    document.getElementById('score').innerText = score;
+  </script>
+</body>
+</html>

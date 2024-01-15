@@ -67,6 +67,7 @@ async function startGame() {
   questionCounter = 0;
   score = 0;
   availableQuesions = await loadQuestions(); // Load questions from the server
+  mx=availableQuesions.length
   getNewQuestion();
   // Other initializations if necessary
 }
@@ -74,14 +75,15 @@ async function startGame() {
 
 
 getNewQuestion = () => {
-  if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
+  if (availableQuesions.length === 0 || questionCounter >= mx) {
     return window.location.assign("/index.html");
   }
+  
   question.style.display = 'block'; // Show the question
   startTimer();
 
   questionCounter++;
-  questionCounterText.innerText = `${questionCounter}/${MAX_QUESTIONS}`;
+  questionCounterText.innerText = `${questionCounter}/${mx}`;
   const questionIndex = Math.floor(Math.random() * availableQuesions.length);
   currentQuestion = availableQuesions[questionIndex];
 
@@ -186,16 +188,22 @@ function hideQuestionImage() {
 incrementScore = num => {
   score += num;
   scoreText.innerText = score;
+
+  if (questionCounter === mx) {
+    // If yes, navigate to the result page
+    navigateToResultPage(score);
+  }
+
 };
 
 
 //time function
 
-let timeLeft = 10; // seconds
+let timeLeft = 60; // seconds
 let timerInterval;
 
 function startTimer() {
-  timeLeft = 10; // Reset time for each question
+  timeLeft = 60; // Reset time for each question
   document.getElementById('timeLeft').innerText = timeLeft; // Update display immediately
 
   clearInterval(timerInterval); // Clear any existing timer
@@ -220,5 +228,10 @@ function timeUp() {
 
 
 
-startGame();
+function navigateToResultPage(score) {
 
+  window.location.href = `/result.html?score=${score}`;
+}
+
+
+startGame();
